@@ -15,21 +15,21 @@
 <meta property="og:site_name" content="Tom&#39;s Blog">
 <meta property="og:description" content="本次框架封装主要是针对微软域控活动目录的基本操作。C#原先以提供活动目录的基本操作，但由域控本身概念较多，开发人员需要对其比较了解，为了降低这方面的学习成本，对其进行二次封装。 框架主要是针对如下两个方面进行封装：  LDAP查询语句自动的生成 活动目录实体对象的操作  在阐述前，先来让我们简单了解关于域控的基本知识。 域控服务器域控服务器是用语言软件集中管理的器件，能安全集中管理域中账户密码、管">
 <meta property="og:locale">
-<meta property="og:image" content="https://i.loli.net/2019/12/13/sTB15axpn82DErO.png">
-<meta property="og:image" content="https://i.loli.net/2019/12/13/eRx9MbEALjqwaz8.png">
+<meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20191213204258601.png">
+<meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20191213204344655.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/13/8F5YdaGzZIbikor.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/13/re4nXCAQjHxWiap.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/13/C2QI5n73HDbdMr8.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/13/fkdOpQrj7KxmH6B.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/13/BvAmtbZEn163rMO.png">
-<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2019/12/970b5936249e6eb5.png">
+<meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20191213214213695.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/13/qWjZkrYcFSeKIpE.png">
 <meta property="article:published_time" content="2019-12-13T12:10:23.000Z">
-<meta property="article:modified_time" content="2021-02-25T06:54:13.478Z">
+<meta property="article:modified_time" content="2021-02-25T09:03:46.433Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2019/12/13/sTB15axpn82DErO.png">
+<meta name="twitter:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20191213204258601.png">
   
     <link rel="alternative" href="/atom.xml" title="Tom&#39;s Blog" type="application/atom+xml">
   
@@ -241,9 +241,10 @@ var _hmt = _hmt || [];
 
 <p>所以本次封装的目标是简单，容易上手且无需关心域控活动目录实体对象属性，仅需根据实际开发要求获取对应的用户，组，组织单或其他。另有特殊要求可在项目中简单扩展即可完成所对应的操作。</p>
 <p>看一下总体UML图：</p>
-<img src="https://i.loli.net/2019/12/13/sTB15axpn82DErO.png" />
+<img src="/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20191213204258601.png" class="" title="image-20191213204258601">
 
-<p><img src="https://i.loli.net/2019/12/13/eRx9MbEALjqwaz8.png" alt="image-20191213204424710"></p>
+<img src="/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20191213204344655.png" class="" title="image-20191213204344655">
+
 <p>框架主要分为多域控服务器配置封装，LDAP语句生成，每个实体对象生成查询，修改和删除。</p>
 <h2 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h2><p>由于本人比较喜欢TDD的开发模式，所以在每个功能点都会有相应的单元测试及功能测试，且域控活动目录原先查询有些慢，再加上有分页的封装，就没有加强测试性能这一块。</p>
 <p>但在实际项目中使用发现查询速度差强人意。查询整个活动目录的ObjectClass=User的对象，查询时间结果如下图(既然花了这么久，有点惊讶)：</p>
@@ -260,7 +261,8 @@ var _hmt = _hmt || [];
 <p>为什么这个方法会引起性能问题呢，让我们接着往下看。</p>
 <p><img src="https://i.loli.net/2019/12/13/BvAmtbZEn163rMO.png" alt="image.png"></p>
 <p>看到这一行有Bind方法，那Bind方法有什么呢，Bind方法里面调用了一个COM组件原生方法ADsOpenObject，这个原方法虽然看不到更多详细信息，但从中看到PATH,USERNAME,PASSWORD，可以猜测到这是又一次到服务器中进行获取数据。</p>
-<p><img src="https://ftp.bmp.ovh/imgs/2019/12/970b5936249e6eb5.png"></p>
+<img src="/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20191213214213695.png" class="" title="image-20191213214213695">
+
 <h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><p>通过上述的分析可以总结到封装在每一次获取数据特殊赋值时，原生方法会再一次去服务器获取数据，所以导致查询性能慢的原因。所以将无需调用InvokeGet方法的属性将不进行使用GetDirectory方法，直接使用SearchResult.Properties属性获取其值，最终测试如下图。</p>
 <p><img src="https://i.loli.net/2019/12/13/qWjZkrYcFSeKIpE.png"></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>封装一个框架除了要简单，易用，示例，文档，性能也很重要的一部分，如性能不行框架也是无法使用，就像当年LINQ To SQL刚出来还是比较新颖的，但使用后发现数据库中数据比较多时会比较慢，所以放弃使用，再到微软也重新设计数据库ORM框架EF，可以看到性能是必备条件。</p>
@@ -521,11 +523,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
