@@ -15,17 +15,15 @@
 <meta property="og:site_name" content="Tom&#39;s Blog">
 <meta property="og:description" content="基本知识">
 <meta property="og:locale">
-<meta property="og:image" content="https://hhqqnu.github.io/2021/02/25/%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20210225142027218.png">
-<meta property="article:published_time" content="2021-02-25T04:36:39.000Z">
-<meta property="article:modified_time" content="2021-02-25T08:52:25.026Z">
+<meta property="og:image" content="https://hhqqnu.github.io/2021/02/25/%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/前端基本知识整理/image-20210225142027218.png">
+<meta property="og:image" content="https://hhqqnu.github.io/2021/02/25/%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/前端基本知识整理/image-20210226093949949.png">
+<meta property="og:image" content="https://hhqqnu.github.io/2021/02/25/%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20210226102700074.png">
+<meta property="article:published_time" content="2021-02-25T12:36:39.000Z">
+<meta property="article:modified_time" content="2021-02-26T04:02:40.619Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="javascript">
-<meta property="article:tag" content="typescript">
-<meta property="article:tag" content="react">
-<meta property="article:tag" content="vue">
-<meta property="article:tag" content="webpack">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hhqqnu.github.io/2021/02/25/%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20210225142027218.png">
+<meta name="twitter:image" content="https://hhqqnu.github.io/2021/02/25/%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/前端基本知识整理/image-20210225142027218.png">
   
     <link rel="alternative" href="/atom.xml" title="Tom&#39;s Blog" type="application/atom+xml">
   
@@ -202,14 +200,14 @@ var _hmt = _hmt || [];
 
         
         <a href="/2021/02/25/%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" class="archive-article-date">
-  	<time datetime="2021-02-25T04:36:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-25</time>
+  	<time datetime="2021-02-25T12:36:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <img src="/2021/02/25/%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20210225142027218.png" class="" title="image-20210225142027218">
+        <img src="前端基本知识整理/image-20210225142027218.png" alt="image-20210225142027218" />
 
 <ul>
 <li><p>重排(回流)reflow与重绘repaint</p>
@@ -220,6 +218,108 @@ var _hmt = _hmt || [];
 <p>减少次数方法，将同一元素的布局操作进行一次性改变。如：JS去操作元素top,left，此时就会产生2次。（尽量不要把读操作和写操作放在一个语句里，这样会产生2次或多次的重排重绘)。</p>
 <p>对于有动画的元素，使用POSITION的ABSOLUTE或FIXED将其脱离文档,在实现动画时将不会影响到其他元素。</p>
 </blockquote>
+</li>
+</ul>
+<img src="前端基本知识整理/image-20210226093949949.png" alt="image-20210226093949949" />
+
+<ul>
+<li><p>原型</p>
+<p>原型是Javascript中继承的基础，JavaScript的继承就是基于原型实现，虽然在ES2015/ES6中有class关键字，但仅是语法糖，最终也是通过原型进行继承。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">Student.prototype.sayHi=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">&#x27;hi&#x27;</span>)&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> stu = <span class="keyword">new</span> Student()</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如上，定义了一个Student对象，在对象的prototype上定义了一个sayHi方法，当实例化Student对象后，stu实体对象会存在__prto__属性指向Student的Prototype，而Student的Prototype也存在__proto__指向Object的Prototype</p>
+</blockquote>
+<ul>
+<li><p>继承</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">eat</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span> eat`</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name, number</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name)</span><br><span class="line">        <span class="built_in">this</span>.number = number</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>-<span class="subst">$&#123;<span class="built_in">this</span>.number&#125;</span>`</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">name, classes</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(name)</span><br><span class="line">        <span class="built_in">this</span>.classes = classes</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>-classess:<span class="subst">$&#123;<span class="built_in">this</span>.classes&#125;</span>`</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> stu = <span class="keyword">new</span> Student(<span class="string">&#x27;student&#x27;</span>, <span class="number">22</span>).sayHi().eat()</span><br><span class="line"><span class="keyword">const</span> tech = <span class="keyword">new</span> Teacher(<span class="string">&#x27;teacher&#x27;</span>, <span class="string">&#x27;c-1&#x27;</span>).sayHi().eat()</span><br><span class="line"><span class="built_in">console</span>.log(stu <span class="keyword">instanceof</span> Student)</span><br><span class="line"><span class="built_in">console</span>.log(stu <span class="keyword">instanceof</span> Person)</span><br><span class="line"><span class="built_in">console</span>.log(stu <span class="keyword">instanceof</span> <span class="built_in">Object</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> Student)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> Person)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Person.prototype === Student.prototype.__proto__</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>变量及this查找总结</p>
+<blockquote>
+<p>所有自由变量的查找，<strong>不是在函数执行时查找</strong>，<strong>而是在函数定义时查找</strong></p>
+<p>this的查找，<strong>是在函数执行时查找</strong>，<strong>而不是在函数定义时查找</strong></p>
+</blockquote>
+</li>
+<li><p>EventLoop</p>
+<img src="/2021/02/25/%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/image-20210226102700074.png" class="" title="image-20210226102700074">
+
+<p>EventLoop是实现JS中的异步执行的实现原理。主要涉及微任务和宏任务。</p>
+<blockquote>
+<p>微任务有Promise，Async/Await。</p>
+<p>宏任务有SetTimeOut,SetInteval,Ajax,DOM事件</p>
+<p><code>微任务和宏任务的主要区别是DOM元素渲染时间，微任务执行比宏任务要早</code></p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 微任务和宏任务</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;async1 start&#x27;</span>) <span class="comment">//2</span></span><br><span class="line">    <span class="keyword">await</span> async2() <span class="comment">//微任务, 后面都是callback 微任务</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;async1 end&#x27;</span>) <span class="comment">//6</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;async2&#x27;</span>) <span class="comment">//3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;script start&#x27;</span>) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout&#x27;</span>) <span class="comment">//8</span></span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">async1()</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;promise1&#x27;</span>) <span class="comment">//4</span></span><br><span class="line">    resolve() <span class="comment">// 微任务</span></span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;promise2&#x27;</span>) <span class="comment">//7 </span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;script end&#x27;</span>) <span class="comment">//5</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AJAX</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;/API&#x27;</span>, <span class="literal">true</span>) <span class="comment">// FALSE同步，TRUE是异步</span></span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState === <span class="number">4</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">            alert(xhr.responseText)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            alert(<span class="string">&#x27;other&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send(<span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>readyState</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>状态</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>UNSET</td>
+<td>代理被创建，但尚未调用open()方法</td>
+</tr>
+<tr>
+<td>1</td>
+<td>OPENED</td>
+<td>open()方法已经被调用</td>
+</tr>
+<tr>
+<td>2</td>
+<td>HEADERS_RECEIVED</td>
+<td>send()方法已经被调用，并且头部和状态已经可获得</td>
+</tr>
+<tr>
+<td>3</td>
+<td>LOADING</td>
+<td>下载中;responseText属性已经包含部分数据</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DONE</td>
+<td>下载操作已完成</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>status</p>
+<p>http请求返回码，1xx 客户端已发送请求，2xx完成，3xx重定向，缓存等（302重定向，304缓存），4xx客户端错误，5xx服务器端错误（504网关请求超时）</p>
+</li>
+</ul>
+</li>
+<li><p>防抖和节流</p>
+<p>防抖，是触发调频事件后N秒内函数只会执行一次，如果N秒内高频事件再次触发，则生新计算时间<br>【场景】search搜索联想，用户在不断输入值时，用防抖来节约请求资源<br>【场景】window触发resize的时候，不断的调整浏览器窗口大小会不断的触发这个事件，用防抖来让其只触发一次</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay=<span class="number">500</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">            <span class="built_in">clearInterval</span>(timer)</span><br><span class="line">        &#125;</span><br><span class="line">        timer = <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">            fn.apply(<span class="built_in">this</span>,<span class="built_in">arguments</span>)</span><br><span class="line">            timer = <span class="literal">null</span></span><br><span class="line">        &#125;,delay)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>节流，高频事件触发，按同样频率进行执行，所以节流会稀释函数执行效率<br>【场景】鼠标不断点击触发，mousedown（单位时间内只触发一次）<br>【场景】监听滚动事件，比如是否滑动到底部加载更多</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, delay=<span class="number">500</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        timer = <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">            fn.apply(fn,<span class="built_in">arguments</span>)</span><br><span class="line">            timer = <span class="literal">null</span></span><br><span class="line">        &#125;,delay)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>深度比较</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">    a: <span class="number">100</span>, <span class="attr">b</span>: &#123;<span class="attr">x</span>:<span class="number">100</span>,<span class="attr">y</span>:<span class="number">100</span>&#125;,<span class="attr">c</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> obj2 = &#123;</span><br><span class="line">    a: <span class="number">100</span>, <span class="attr">b</span>:&#123;<span class="attr">x</span>:<span class="number">100</span>,<span class="attr">y</span>:<span class="number">100</span>&#125;,<span class="attr">c</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isObject</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> obj === <span class="string">&#x27;object&#x27;</span> &amp;&amp; obj !==<span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEqual</span>(<span class="params">obj1,obj2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!isObject(obj1) || !isObject(ob2)) &#123;</span><br><span class="line">        <span class="keyword">return</span> obj1 === obj2</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(obj1 === obj2) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">const</span> obj1Keys = <span class="built_in">Object</span>.keys(obj1)</span><br><span class="line">    <span class="keyword">const</span> obj2Keys = <span class="built_in">Object</span>.keys(obj2)</span><br><span class="line">    <span class="keyword">if</span> (obj1Keys.length !== obj2Keys.length)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> obj1) &#123;</span><br><span class="line">        <span class="keyword">const</span> res = isEqual(obj1[key], obj2[key])</span><br><span class="line">        <span class="keyword">if</span>(!res)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(isEqual(obj1, obj2))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组拍平</p>
+<p>方法一</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flat</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> r = arr.some(<span class="function"><span class="params">a</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a <span class="keyword">instanceof</span> <span class="built_in">Array</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span>(!r) &#123;</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> newArr = <span class="built_in">Array</span>.prototype.concat.apply([],arr) <span class="comment">//重点</span></span><br><span class="line">    <span class="keyword">return</span> flat(newArr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法二</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flat</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">newArr,arr</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!(arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>)) &#123;</span><br><span class="line">            newArr.push(arr)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">const</span> newResult = (flat(<span class="built_in">Array</span>.prototype.concat.apply([],arr))) <span class="comment">//重点</span></span><br><span class="line">            newArr = newArr.concat(newResult)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newArr</span><br><span class="line">    &#125;,[])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 </li>
 </ul>
 
@@ -262,22 +362,6 @@ var _hmt = _hmt || [];
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">typescript</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
         		</li>
       		
 		</ul>
@@ -498,31 +582,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">typescript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">other</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">other</a>
               </li>
              
               <li class="article-tag-list-item">
