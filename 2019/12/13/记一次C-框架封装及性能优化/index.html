@@ -17,15 +17,15 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20191213204258601.png">
 <meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20191213204344655.png">
-<meta property="og:image" content="https://i.loli.net/2019/12/13/8F5YdaGzZIbikor.png">
-<meta property="og:image" content="https://i.loli.net/2019/12/13/re4nXCAQjHxWiap.png">
-<meta property="og:image" content="https://i.loli.net/2019/12/13/C2QI5n73HDbdMr8.png">
-<meta property="og:image" content="https://i.loli.net/2019/12/13/fkdOpQrj7KxmH6B.png">
-<meta property="og:image" content="https://i.loli.net/2019/12/13/BvAmtbZEn163rMO.png">
+<meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/8F5YdaGzZIbikor.png">
+<meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/re4nXCAQjHxWiap.png">
+<meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/C2QI5n73HDbdMr8.png">
+<meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/fkdOpQrj7KxmH6B.png">
+<meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/BvAmtbZEn163rMO.png">
 <meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20191213214213695.png">
-<meta property="og:image" content="https://i.loli.net/2019/12/13/qWjZkrYcFSeKIpE.png">
+<meta property="og:image" content="https://hhqqnu.github.io/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/qWjZkrYcFSeKIpE.png">
 <meta property="article:published_time" content="2019-12-13T12:10:23.000Z">
-<meta property="article:modified_time" content="2021-02-25T09:03:46.433Z">
+<meta property="article:modified_time" content="2021-03-02T05:46:43.210Z">
 <meta property="article:author" content="Tom">
 <meta property="article:tag" content="C#">
 <meta name="twitter:card" content="summary">
@@ -248,23 +248,27 @@ var _hmt = _hmt || [];
 <p>框架主要分为多域控服务器配置封装，LDAP语句生成，每个实体对象生成查询，修改和删除。</p>
 <h2 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h2><p>由于本人比较喜欢TDD的开发模式，所以在每个功能点都会有相应的单元测试及功能测试，且域控活动目录原先查询有些慢，再加上有分页的封装，就没有加强测试性能这一块。</p>
 <p>但在实际项目中使用发现查询速度差强人意。查询整个活动目录的ObjectClass=User的对象，查询时间结果如下图(既然花了这么久，有点惊讶)：</p>
-<p><img src="https://i.loli.net/2019/12/13/8F5YdaGzZIbikor.png" alt="oldAdOperation.png"></p>
+<img src="/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/8F5YdaGzZIbikor.png" class="" title="8F5YdaGzZIbikor">
+
 <h2 id="性能排查过程"><a href="#性能排查过程" class="headerlink" title="性能排查过程"></a>性能排查过程</h2><p>为了让查询比较方便，采用了数据转换实体的方法即反射技术。</p>
 <p>所以想到是否由于元素过多，反射赋值或查询属性导致，决定第一步将反射类型对象进行缓存，利用C#表达式委托方法进行赋值和查询属性，而不使用反射进行赋值及查询属性值，但在做完这一步动作后，发现效果并不是很理想。第二步决定用trace进行跟踪测试程序运行，查看那一步引起性能问题。</p>
-<p><img src="https://i.loli.net/2019/12/13/re4nXCAQjHxWiap.png" alt="02.png"></p>
+<img src="/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/re4nXCAQjHxWiap.png" class="" title="re4nXCAQjHxWiap">
+
 <p>跟踪到C#提供的原生获取属性的方法占用时间比较多，但原生方法无法改造，只能减少获取实体对象属性（根数据库查询不使用*一样的原理）。</p>
 <p>现在放在面前只有减少属性的获取，但如果这样的话，调用端操作就比较麻烦，查询时需要知道有哪些属性字段（字段名的获取不向数据库来得那么方便），比较麻烦。</p>
 <p><em>难道真的没有办法再优化了么？</em>还是本身封装时就存在方法错误，此时抛弃认为正确的设计，<strong>采用原生方法进行测试，并获取相同的属性，发现测试性能并没有那么差</strong>。</p>
-<p><img src="https://i.loli.net/2019/12/13/C2QI5n73HDbdMr8.png" alt="native operation"></p>
+<img src="/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/C2QI5n73HDbdMr8.png" class="" title="C2QI5n73HDbdMr8">
+
 <p>会奇怪的发现和封装的方法里面调用不太一样，里面并没有把大多时间放在SearchResultCollection.get_Item方法上，而是在MoveNext上。从这个方法可以联想到封装为了能够用到InvokeGet方法，直接使用了SearchResult.GetDirectoryEntry方法。</p>
-<p><img src="https://i.loli.net/2019/12/13/fkdOpQrj7KxmH6B.png"></p>
+<img src="/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/fkdOpQrj7KxmH6B.png" class="" title="fkdOpQrj7KxmH6B">
+
 <p>为什么这个方法会引起性能问题呢，让我们接着往下看。</p>
-<p><img src="https://i.loli.net/2019/12/13/BvAmtbZEn163rMO.png" alt="image.png"></p>
-<p>看到这一行有Bind方法，那Bind方法有什么呢，Bind方法里面调用了一个COM组件原生方法ADsOpenObject，这个原方法虽然看不到更多详细信息，但从中看到PATH,USERNAME,PASSWORD，可以猜测到这是又一次到服务器中进行获取数据。</p>
+<p>看<img src="/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/BvAmtbZEn163rMO.png" class="" title="BvAmtbZEn163rMO">到这一行有Bind方法，那Bind方法有什么呢，Bind方法里面调用了一个COM组件原生方法ADsOpenObject，这个原方法虽然看不到更多详细信息，但从中看到PATH,USERNAME,PASSWORD，可以猜测到这是又一次到服务器中进行获取数据。</p>
 <img src="/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/image-20191213214213695.png" class="" title="image-20191213214213695">
 
 <h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><p>通过上述的分析可以总结到封装在每一次获取数据特殊赋值时，原生方法会再一次去服务器获取数据，所以导致查询性能慢的原因。所以将无需调用InvokeGet方法的属性将不进行使用GetDirectory方法，直接使用SearchResult.Properties属性获取其值，最终测试如下图。</p>
-<p><img src="https://i.loli.net/2019/12/13/qWjZkrYcFSeKIpE.png"></p>
+<img src="/2019/12/13/%E8%AE%B0%E4%B8%80%E6%AC%A1C-%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/qWjZkrYcFSeKIpE.png" class="" title="qWjZkrYcFSeKIpE">
+
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>封装一个框架除了要简单，易用，示例，文档，性能也很重要的一部分，如性能不行框架也是无法使用，就像当年LINQ To SQL刚出来还是比较新颖的，但使用后发现数据库中数据比较多时会比较慢，所以放弃使用，再到微软也重新设计数据库ORM框架EF，可以看到性能是必备条件。</p>
 
       
@@ -535,11 +539,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">other</a>
+                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+                <a href="javascript:void(0)" class="js-tag color1">other</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -630,7 +634,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">码农&lt;br&gt;&lt;br&gt;立志成为一个优秀程序员</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">码农&lt;br&gt;&lt;br&gt;励志成为一个优秀程序员</div>
   	  	
     	</section>
     
